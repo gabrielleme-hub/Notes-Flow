@@ -1,13 +1,22 @@
+import { useAuth } from "@/context/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { RiShutDownLine } from "react-icons/ri";
 
 export function Header() {
+  const router = useRouter();
+
+  const handleClickProfile = () => {
+    router.push("/profile");
+  };
+  const { signOut } = useAuth();
   return (
     <div className="flex flex-row items-center justify-between pt-6 px-20 w-full mb-[6px]">
       <div className="flex flex-row items-center">
         <Image
-          className="rounded-full"
+          onClick={handleClickProfile}
+          className="rounded-full cursor-pointer"
           src="/Assets/foto_perfil_gabriel.jpeg"
           alt="Image de perfil"
           width={70}
@@ -18,7 +27,7 @@ export function Header() {
           <h1>Gabriel Leme</h1>
         </div>
       </div>
-      <Link href="/" aria-label="Logout" className="">
+      <Link onClick={() => signOut()} href="/">
         <RiShutDownLine size={36} className="text-[#999591]" />
       </Link>
     </div>

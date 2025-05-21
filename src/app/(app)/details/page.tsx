@@ -35,7 +35,7 @@ export default function Details() {
           <Tags title="express" />
           <Tags title="nodejs" />
         </Section>
-        <MyButton title="Voltar" onClick={handleClickBack} />
+        <MyButton message="Voltar" onClick={handleClickBack} />
       </main>
     </div>
   );

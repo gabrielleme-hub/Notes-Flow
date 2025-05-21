@@ -10,6 +10,7 @@ interface inputPasswordProps {
   icon?: React.ReactNode;
   placeholder?: string;
   children?: React.ReactNode;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export function InputPassword({
@@ -20,6 +21,7 @@ export function InputPassword({
   icon,
   placeholder,
   children,
+  ...props
 }: inputPasswordProps) {
   const [isShow, setIsShow] = useState(false);
 
@@ -39,6 +41,7 @@ export function InputPassword({
         </div>
       )}
       <input
+        {...props}
         type={isShow ? "text" : "password"}
         placeholder={
           placeholder || (typeof children === "string" ? children : undefined)
