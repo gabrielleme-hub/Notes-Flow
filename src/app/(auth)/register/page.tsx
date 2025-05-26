@@ -97,7 +97,7 @@ export default function Register() {
         className="px-[136px] flex flex-col justify-center"
       >
         <h1 className="text-[48px] font-bold text-center text-[#FF9000]">
-          RocketNotes
+          NotesFlow
         </h1>
         <p className="text-[#999591] text-[14px] text-center mb-[40px]">
           Aplicação para salvar e gerenciar seus links úteis.
