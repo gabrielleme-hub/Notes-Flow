@@ -8,7 +8,9 @@ export const urls = {
   NOTES: {
     CREATE_NOTES: "/notes",
     UPDATE_NOTES: "/notes",
+    DELETE_NOTES: "/notes",
     GET_NOTES: "/notes",
+    GET_NOTES_BY_ID: "/notes",
   },
   TAGS: {
     CREATE_TAGS: "/tags",

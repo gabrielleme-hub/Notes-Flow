@@ -5,9 +5,17 @@ interface NotesItemProps {
   value: string;
   isNew: boolean;
   onClick: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
 }
 
-export function NotesItem({ isNew, value, onClick, ...rest }: NotesItemProps) {
+export function NotesItem({
+  isNew,
+  value,
+  onClick,
+  onChange,
+  placeholder,
+}: NotesItemProps) {
   return (
     <div className="flex justify-center w-full cursor-pointer mb-5">
       <div
@@ -19,16 +27,17 @@ export function NotesItem({ isNew, value, onClick, ...rest }: NotesItemProps) {
       >
         <input
           type="text"
+          placeholder={placeholder}
+          onChange={onChange}
           value={value}
           readOnly={!isNew}
-          {...rest}
           className="flex items-center justify-between border-none text-[#ffffff] w-full p-2 text-[16px] gap-2 outline-none"
         />
-        <button onClick={onClick}>
+        <button type="button" onClick={onClick}>
           {isNew ? (
-            <VscAdd size={20} className="text-[#FF9000]" />
+            <VscAdd size={20} className="text-[#FF9000] cursor-pointer" />
           ) : (
-            <FiX size={20} className="text-[#FF002E]" />
+            <FiX size={20} className="text-[#FF002E] cursor-pointer" />
           )}
         </button>
       </div>

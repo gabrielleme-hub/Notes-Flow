@@ -23,10 +23,13 @@ export const PostFetch = async (url: string, params: any, ...rest: any[]) => {
   const data = await api.post(url, params, ...rest);
   return data;
 };
+export const DeleteFetch = async (url: string) => {
+  const JWT = getFromLocalStorage("JWT_HASH");
+  api.defaults.headers.authorization = `Bearer ${JWT}`;
+  const response = await api.delete(url);
+  return response;
+};
 
-// @/config/api.ts
-
-// AJUSTADO: GetFetch para lidar com responseType
 export const GetFetchFile = async (
   url: string,
   params = {},

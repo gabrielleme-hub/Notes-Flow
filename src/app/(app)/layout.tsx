@@ -3,5 +3,5 @@ export default function AppLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main className="flex bg-[#28262E]">{children}</main>;
+  return <main>{children}</main>;
 }

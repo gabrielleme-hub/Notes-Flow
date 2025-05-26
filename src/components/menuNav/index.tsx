@@ -5,11 +5,21 @@ import { VscAdd } from "react-icons/vsc";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function MenuNav() {
+interface MenuNavProps {
+  tags?: string[];
+  onSelectTag?: (tagName: string) => void;
+  selectedTags?: string[];
+}
+export function MenuNav({
+  tags,
+  onSelectTag,
+  selectedTags = [],
+}: MenuNavProps) {
   const router = useRouter();
   const handleOpenCreateNote = () => {
     router.push("/create");
   };
+
   return (
     <div className="flex flex-col bg-[#232129] relative top-0 left-0 w-[300px] h-screen justify-between ">
       <div className="flex flex-col items-center mt-[50px]">
@@ -24,11 +34,20 @@ export function MenuNav() {
       </div>
 
       <div>
-        <div className="flex flex-col items-center gap-[24px]">
-          <MyTextButton title="Todos" />
-          <MyTextButton title="Frontend" />
-          <MyTextButton title="Node" />
-          <MyTextButton title="React" />
+        <div className="flex flex-col items-start px-20 gap-[10px] scroll-auto">
+          <MyTextButton
+            title="Todos"
+            onClick={() => onSelectTag?.("")}
+            isActive={selectedTags.length === 0}
+          />
+          {tags?.map((tagName) => (
+            <MyTextButton
+              key={tagName}
+              title={tagName}
+              onClick={() => onSelectTag?.(tagName)}
+              isActive={selectedTags.includes(tagName)}
+            />
+          ))}
         </div>
       </div>
 
